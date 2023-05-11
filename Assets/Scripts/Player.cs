@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private InputActionReference movement, pointerPosition;
+    private Animator animatorR, animatorL;
 
     private void Awake()
     {
+        animatorL = GetComponent<Animator>(); 
+        animatorR = GetComponent<Animator>();
         Mover = GetComponent<Mover>();
     }
     void Start()
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
     {
         movementInput = movement.action.ReadValue<Vector2>();
         Mover.MovementInput = movementInput;
+        animatorR.SetFloat("InputX", movementInput.x);
+        animatorL.SetFloat("InputX", movementInput.x);
     }
 
     private Vector2 GetPointerInput()

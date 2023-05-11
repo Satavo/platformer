@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     private Rigidbody2D rigidb2d;
+    public float animationSpeed;
     [SerializeField]
     private float maxSpeed = 2, acceleration = 50, deacceleration = 100;
     [SerializeField]
@@ -21,13 +22,14 @@ public class Mover : MonoBehaviour
         if (MovementInput.magnitude > 0 && currentSpeed >= 0)
         {
             prevMovementInput = MovementInput;
-            currentSpeed += acceleration * maxSpeed * Time.deltaTime;
+            currentSpeed += acceleration * maxSpeed * Time.fixedDeltaTime;
         }
         else
         {
-            currentSpeed -= deacceleration * maxSpeed * Time.deltaTime;
+            currentSpeed -= deacceleration * maxSpeed * Time.fixedDeltaTime;
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        rigidb2d.velocity = prevMovementInput * currentSpeed;
+        //rigidb2d.velocity = prevMovementInput * currentSpeed;
+        rigidb2d.velocity = new Vector2(animationSpeed * maxSpeed * Time.fixedDeltaTime, 0);
     }
 }

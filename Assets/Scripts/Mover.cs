@@ -29,7 +29,6 @@ public class Mover : MonoBehaviour
             currentSpeed -= deacceleration * maxSpeed * Time.fixedDeltaTime;
         }
         currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
-        //rigidb2d.velocity = prevMovementInput * currentSpeed;
         rigidb2d.velocity = new Vector2(animationSpeed * maxSpeed * Time.fixedDeltaTime, 0);
     }
 }

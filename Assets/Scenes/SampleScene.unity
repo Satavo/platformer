@@ -431,9 +431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementInput: {x: 0, y: 0}
-  pointerInput: {x: 0, y: 0}
   movement: {fileID: 2073436632508597212, guid: 8a2edbca79324884a8dc01e4befe9af8, type: 3}
-  pointerPosition: {fileID: 2903125696549912581, guid: 8a2edbca79324884a8dc01e4befe9af8, type: 3}
+  run: {fileID: -7361899826550040760, guid: 8a2edbca79324884a8dc01e4befe9af8, type: 3}
 --- !u!4 &1470335062
 Transform:
   m_ObjectHideFlags: 0
@@ -462,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSpeed: 0
-  maxSpeed: 4
+  maxSpeed: 40.2
   acceleration: 10
   deacceleration: 20
   currentSpeed: 0

@@ -6,36 +6,25 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     private Mover Mover;
-    public Vector2 movementInput, pointerInput;
-    public Vector2 PointerInput => pointerInput;
-
+    public Vector2 movementInput;
     [SerializeField]
-    private InputActionReference movement, pointerPosition;
-    private Animator animatorR, animatorL;
+    private InputActionReference movement, run;
+    private Animator animatorR;
 
     private void Awake()
     {
-        animatorL = GetComponent<Animator>(); 
         animatorR = GetComponent<Animator>();
         Mover = GetComponent<Mover>();
-    }
-    void Start()
-    {
-        
     }
 
     void Update()
     {
         movementInput = movement.action.ReadValue<Vector2>();
+        if (run.action.ReadValue<float>() == 1)
+        {
+            movementInput.x = -2f;
+        }
         Mover.MovementInput = movementInput;
         animatorR.SetFloat("InputX", movementInput.x);
-        animatorL.SetFloat("InputX", movementInput.x);
-    }
-
-    private Vector2 GetPointerInput()
-    {
-        Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
-        mousePos.z = Camera.main.nearClipPlane;
-        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }
